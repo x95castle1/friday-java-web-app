@@ -1,0 +1,25 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: custom-java-web-app
+  labels:
+    apps.tanzu.vmware.com/workload-type: custom
+    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+    app.kubernetes.io/part-of: custom-java-web-app
+  namespace: jeremy
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "11"
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  - name: replicas 
+    value: 3
+  source:
+    git:
+      url: https://github.com/x95castle1/friday-java-web-app
+      ref:
+        branch: main
