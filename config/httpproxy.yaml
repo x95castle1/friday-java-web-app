@@ -1,0 +1,12 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: server-java-web-app
+  namespace: jeremy
+spec:
+  routes:
+  - services:
+    - name: server-java-web-app
+      port: 8080
+  virtualhost:
+    fqdn: server-java-web-app.run.prep.tapsme.org
