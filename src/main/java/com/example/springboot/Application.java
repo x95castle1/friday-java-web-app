@@ -14,7 +14,7 @@ import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;
 public class Application {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(Application.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Bean
