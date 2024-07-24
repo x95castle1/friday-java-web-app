@@ -21,11 +21,11 @@ class HelloControllerTest {
 
     @Test
     void index() throws Exception {
-        assertEquals("Yo from Spring Boot + Tanzu + happy friyay! + another failure - Supply Chain 2", controller.index());
+        assertEquals("Yo from Spring Boot + Tanzu + happy friyay! + another failure - Supply Chain too", controller.index());
 
         mockMvc
             .perform(get("/"))
             .andExpect(status().isOk())
-            .andExpect(content().string("Yo from Spring Boot + Tanzu + happy friyay! + another failure - Supply Chain 2"));
+            .andExpect(content().string("Yo from Spring Boot + Tanzu + happy friyay! + another failure - Supply Chain too"));
     }
 }
