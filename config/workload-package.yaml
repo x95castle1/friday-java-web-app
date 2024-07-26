@@ -1,0 +1,29 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    app.kubernetes.io/name: friday-sre-package
+    app.kubernetes.io/part-of: friday-sre-package
+    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/workload-type: server-sre
+  name: friday-sre-package
+spec:
+  params:
+  - name: carvel_package_openapiv3_enabled
+    value: false
+  - name: image_scanner_template_name
+    value: image-scanner-template
+  - name: scanning_source_policy
+    value: lax-scan-policy
+  - name: scanning_image_policy
+    value: lax-scan-policy
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/language: java
+      apps.tanzu.vmware.com/pipeline: test
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/x95castle1/friday-java-web-app
