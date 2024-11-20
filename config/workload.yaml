@@ -6,7 +6,7 @@ metadata:
     apps.tanzu.vmware.com/workload-type: web
     apps.tanzu.vmware.com/auto-configure-actuators: "true"
     app.kubernetes.io/part-of: friday-java-web-app
-  namespace: jeremy
+  namespace: dev
 spec:
   build:
     env:
