@@ -1,0 +1,12 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: header-app
+  namespace: dev
+spec:
+  routes:
+  - services:
+    - name: oom-java-web-app
+      port: 8080
+  virtualhost:
+    fqdn: oom.dev.tap.z9accdcdf.shepherd.lease

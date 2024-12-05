@@ -1,0 +1,30 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: oom-java-web-app
+  labels:
+    apps.tanzu.vmware.com/workload-type: server
+    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+    app.kubernetes.io/part-of: oom-java-web-app
+    apps.tanzu.vmware.com/has-tests: "true"
+  namespace: dev
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "11"
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  resources:
+    limits:
+      memory: "375Mi"
+    requests:
+      memory: "300Mi"
+  source:
+    git:
+      url: https://github.com/x95castle1/friday-java-web-app
+      ref:
+        branch: main
+    
